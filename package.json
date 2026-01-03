@@ -1,0 +1,172 @@
+{
+  "name": "vscode-onenote-clipper",
+  "displayName": "OneNote Clipper for VSCode",
+  "description": "将代码片段或文件内容发送到OneNote",
+  "version": "0.0.2",
+  "author": "伏无",
+  "publisher": "fuwu",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/vscode-onenote-clipper"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "onenote.sendSelection",
+        "title": "发送选中内容到OneNote"
+      },
+      {
+        "command": "onenote.sendFile",
+        "title": "发送整个文件到OneNote"
+      },
+      {
+        "command": "onenote.sendMultipleFiles",
+        "title": "批量发送文件到OneNote"
+      },
+      {
+        "command": "onenote.login",
+        "title": "登录Microsoft账户"
+      },
+      {
+        "command": "onenote.logout",
+        "title": "登出Microsoft账户"
+      },
+      {
+        "command": "onenote.clearTokens",
+        "title": "清除所有token并重新登录"
+      },
+      {
+        "command": "onenote.selectTarget",
+        "title": "选择OneNote目标位置"
+      },
+      {
+        "command": "onenote.sendMarkdown",
+        "title": "发送Markdown到OneNote"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "onenote.sendSelection",
+        "key": "ctrl+alt+o",
+        "mac": "cmd+alt+o",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "onenote.sendFile",
+        "key": "ctrl+shift+alt+o",
+        "mac": "cmd+shift+alt+o"
+      },
+      {
+        "command": "onenote.sendMultipleFiles",
+        "key": "ctrl+shift+alt+m",
+        "mac": "cmd+shift+alt+m"
+      },
+      {
+        "command": "onenote.sendMarkdown",
+        "key": "ctrl+shift+alt+i",
+        "mac": "cmd+shift+alt+i"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "onenote.sendSelection",
+          "when": "editorHasSelection",
+          "group": "onenote"
+        },
+        {
+          "command": "onenote.sendFile",
+          "group": "onenote"
+        },
+        {
+          "command": "onenote.sendMarkdown",
+          "when": "editorLangId == markdown",
+          "group": "onenote"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "OneNote Clipper",
+      "properties": {
+        "onenote.clientId": {
+          "type": "string",
+          "default": "",
+          "description": "Azure应用的Client ID（通常不需要修改，使用默认的公共应用即可）",
+          "order": 1
+        },
+        "onenote.defaultNotebook": {
+          "type": "string",
+          "default": "",
+          "description": "默认笔记本名称（留空则每次选择）",
+          "order": 2
+        },
+        "onenote.defaultSection": {
+          "type": "string",
+          "default": "",
+          "description": "默认分区名称（留空则每次选择）",
+          "order": 3
+        },
+        "onenote.codeHighlightTheme": {
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "default",
+            "github",
+            "monokai",
+            "vs-dark",
+            "vs-light",
+            "atom-one-dark"
+          ],
+          "enumDescriptions": [
+            "默认主题",
+            "GitHub风格",
+            "Monokai深色主题",
+            "VS Code深色主题",
+            "VS Code浅色主题",
+            "Atom One Dark主题"
+          ],
+          "description": "代码高亮主题",
+          "order": 4
+        },
+        "onenote.enableTags": {
+          "type": "boolean",
+          "default": true,
+          "description": "发送时是否启用标签输入（如果禁用，将跳过标签输入步骤）",
+          "order": 5
+        },
+        "onenote.createNewPage": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否创建新页面",
+          "order": 6
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.74.0",
+    "typescript": "^4.9.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-task-lists": "^2.1.1"
+  }
+}

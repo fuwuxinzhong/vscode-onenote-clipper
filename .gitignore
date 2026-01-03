@@ -1,0 +1,14 @@
+node_modules
+out
+.vscode-test
+*.vsix
+.env
+.DS_Store
+
+# 避免提交包含敏感信息的VSCode配置
+.vscode/settings.json
+credentials.txt
+
+# 但保留launch.json和tasks.json（这些不包含敏感信息）
+!.vscode/launch.json
+!.vscode/tasks.json
