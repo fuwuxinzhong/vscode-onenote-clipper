@@ -4,10 +4,10 @@
   "description": "将代码片段或文件内容发送到OneNote",
   "version": "0.0.2",
   "author": "伏无",
-  "publisher": "fuwu",
+  "publisher": "fuwuxinzhong",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/vscode-onenote-clipper"
+    "url": "https://github.com/fuwuxinzhong/vscode-onenote-clipper"
   },
   "engines": {
     "vscode": "^1.74.0"
