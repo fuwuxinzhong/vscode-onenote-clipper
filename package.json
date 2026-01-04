@@ -2,7 +2,7 @@
   "name": "vscode-onenote-clipper",
   "displayName": "OneNote Clipper for VSCode",
   "description": "将代码片段或文件内容发送到OneNote",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "伏无",
   "publisher": "fuwuxinzhong",
   "repository": {
@@ -19,6 +19,7 @@
     "*"
   ],
   "main": "./out/extension.js",
+  "icon": "onenote.png",
   "contributes": {
     "commands": [
       {
